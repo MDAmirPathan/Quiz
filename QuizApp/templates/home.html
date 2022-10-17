@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+   
+    {% for qd in question_data %}
+        {{qd.question}} <br>
+        {{qd.op1}} <br>
+        {{qd.op2}} <br>
+        {{qd.op3}} <br>
+        {{qd.op4}} <br>
+        =================== <br>
+        <input class="form-check-input" type="radio" name="{{qd.op1}}" id="gridRadios1" value="option1" checked>
+    {% endfor %}
+</body>
+</html>
