@@ -32,7 +32,9 @@ class SignUp(View):
             password_hash = make_password(password)
             register_user.password = password_hash
             register_user.register()
-            request.session['player_id'] = UserData.objects.filter(email=email).first().id
+            registered_user = UserData.objects.filter(email=email).first()
+            request.session['user_id'] = registered_user.id
+            request.session['first_name'] = registered_user.first_name
             return redirect('home_page')
            
         except Exception as e:
@@ -72,11 +74,29 @@ class LogIn(View):
         postData = request.POST
         email = postData.get('email')
         password = postData.get('password')
+        user_exists = UserData.isExists(email)
+        error_message = 'Wrong Email or Password'
+
+        if not user_exists:
+            return render(request, 'login.html', {'error_message': error_message})
+       
+        registered_user = UserData.objects.filter(email=email).first()
+        user_password = registered_user.password
         
-        return render(request, 'login.html')
+        if not check_password(password, user_password):
+            return render(request, 'login.html', {'error_message': error_message})
+       
+        request.session['user_id'] = registered_user.id
+        request.session['first_name'] = registered_user.first_name
+        return redirect('home_page')
 
 
     def get(self, request):
         return render(request, 'login.html')
+    
+
+def logout(request):
+    request.session.clear()
+    return redirect('login_page')
     
     

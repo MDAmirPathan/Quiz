@@ -7,7 +7,9 @@
     <title>Home</title>
 </head>
 <body>
-   
+    {% if first_name%} 
+    Welcome Back {{first_name}} <br>
+    {% endif %}
     {% for qd in question_data %}
         {{qd.question}} <br>
         {{qd.op1}} <br>
