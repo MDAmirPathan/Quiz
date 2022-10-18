@@ -7,6 +7,9 @@
     <title>Log In</title>
 </head>
 <body align="center">
+    {% block navbar %}
+		{% include 'assets/navbar.html' %}
+	{% endblock navbar %}
     <h3>Login </h3>
     {{error_message}}
 

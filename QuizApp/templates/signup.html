@@ -7,6 +7,9 @@
     <title>Sign Up</title>
 </head>
 <body align="center">
+    {% block navbar %}
+		{% include 'assets/navbar.html' %}
+	{% endblock navbar %}
     <h3>Sign Up</h3>
     {{error_message}}
     <form action="/signup/" method="post">
