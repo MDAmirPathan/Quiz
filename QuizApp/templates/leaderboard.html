@@ -10,5 +10,11 @@
     {% block navbar %}
 		{% include 'assets/navbar.html' %}
 	{% endblock navbar %}
+    {% for player in obj %}
+    {{player.first_name}}
+    {{player.score}}
+    {{player.correct}}
+    {{player.wrong}} <br>
+    {% endfor %}
 </body>
 </html>

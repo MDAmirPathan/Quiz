@@ -20,6 +20,7 @@
     {% if first_name%}
     Welcome Back {{first_name}} <br>
     {% endif %}
+    {{error_message}}
     <form action="/" method="post">
         {% csrf_token %}
 
@@ -39,7 +40,6 @@
 
         ===================*===================*===================*=================== <br>
         {% endfor %}
-        <input type="button" name="finish" value="Finish Quize">
         <button type="submit">Finish</button>
     </form>
 
